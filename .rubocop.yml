@@ -1,0 +1,22 @@
+AllCops:
+  TargetRubyVersion: 2.6
+Metrics/LineLength:
+  Max: 100
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*test_*.rb"
+Metrics/BlockLength:
+  Exclude:
+    - "**/*test_*.rb"
+Lint/UselessComparison:
+  Exclude:
+    - "**/*test_*.rb"
+Layout/MultilineOperationIndentation:
+  Exclude:
+    - "**/*test_*.rb"
