@@ -19,7 +19,7 @@ gem 'yep'
 ## Usage
 
 In the following example we will use a simple convoluted application that
-queries an external API for some data.
+queries an external API for user data.
 
 ```ruby
 require 'net/http'
@@ -48,18 +48,22 @@ end
 ```
 
 The problem with the code above is that the `User` class has a hard dependency
-on `RandomUserRepository`. This has two negative side effects. It would not be
-simple in a larger application to swap out the `RandomUserRepository` for
-another underlying repository such as `SqlUserRepository`. It's not simple
-to swap out the `RandomUserRepository` for testing purposes, maybe for
-something like `TestUserRepository`.
+on the `RandomUserRepository`. This has two negative side effects. 
 
-So lets have a look at dependency injection with yep to see how this can be
+It would not be simple in a larger application to swap out the
+`RandomUserRepository` and all the places it ends up being littered throughout
+the application for another implementation of the repository such as
+`SqlUserRepository`. 
+
+It would not be simple and concise to swap out the `RandomUserRepository` for
+testing purposes, maybe for something like a `TestUserRepository`.
+
+So lets have a look at dependency injection with `yep` to see how this can be
 solved.
 
 ### Container
 
-The container will hold dependencies registered under keys which can then later
+The container will store dependencies registered under keys which can then later
 be resolved. Registration of dependencies should happen once for an application.
 
 ```ruby
@@ -77,8 +81,8 @@ end
 App.boot
 ```
 
-During registration we register a class under a key then assign a lifetime to
-the registered class. 
+During boot we register classes under a keys then assign a lifetime to the
+registered classes. 
 
 If `Yep::Container::SINGLETON` is used as a lifetime, every time the dependency
 is resolved the container will return the same instance of a class.
@@ -114,7 +118,7 @@ registered dependency, in this case `repository`. Now by calling
 container.
 
 If at anytime you wanted to swap out and use a different repository, as long
-as it has the same method signatures and return the same data structures, you
+as it has the same method signatures and returns the same data structures, you
 can just change the dependency on the container.
 
 Example:
@@ -123,7 +127,7 @@ A new repository that reads from a SQL database.
 
 ```ruby
 class SqlUserRepository
-  include SomeSqlModule
+  include Sql
 
   class << self
     def random
@@ -159,7 +163,7 @@ programmatically resolve a dependency from the container.
 
 ### Testing
 
-During testing you may want to mock how the dependences are resolved.
+When testing you may want to mock how the dependences are resolved.
 
 In this example we mock the Users repository call to return a reliable set of
 data for testing.
