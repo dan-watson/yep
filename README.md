@@ -204,3 +204,24 @@ is then unmocked (returned back to it's original state)
 ## Licence
 
 See `LICENCE` file.
+
+## Development
+
+### Prerequisites
+
+* Docker Community Edition - https://www.docker.com/community-edition
+* Docker Compose - https://docs.docker.com/compose/
+* Make - https://www.gnu.org/software/make/
+
+### Setup
+
+* `make` will build the application ready for use.
+
+### Lint
+
+* `make lint` will run linting
+
+### Tests
+
+* `make spec` will run tests
+

@@ -1,5 +1,6 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0.2
+  NewCops: enable
 Metrics/LineLength:
   Max: 100
 Style/Documentation:
@@ -14,7 +15,10 @@ Metrics/ModuleLength:
 Metrics/BlockLength:
   Exclude:
     - "**/*test_*.rb"
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
+  Exclude:
+    - "**/*test_*.rb"
+Lint/IdentityComparison:
   Exclude:
     - "**/*test_*.rb"
 Layout/MultilineOperationIndentation:

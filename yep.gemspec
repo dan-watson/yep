@@ -1,4 +1,5 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
+
 require 'yep/version'
 
 Gem::Specification.new do |s|
@@ -16,4 +17,5 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`
     .split("\n").map { |f| File.basename(f) }
   s.require_paths = ['lib']
+  s.required_ruby_version = '> 3.0'
 end
