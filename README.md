@@ -225,3 +225,8 @@ See `LICENCE` file.
 
 * `make spec` will run tests
 
+## Donations
+
+Yep is free to all, but donations are welcome.
+
+Bitcoin: bc1q29t0jnxy8dewatg0qjm0w0rxjfra4laykr7h03
